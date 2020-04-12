@@ -21,7 +21,7 @@ sudo apt-get dist-upgrade
 a) Run the following commands to install dependencies, download the source code and build the GameBoy Tool
 ```
 cd /home/pi
-sudo apt-get install libssl-dev
+sudo apt-get install -y libssl-dev
 git clone https://github.com/pixelcircuits/GBTool.git
 cd GBTool
 make
