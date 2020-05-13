@@ -26,6 +26,7 @@ static const char* saveExGBA = "sav";
 static void readROM(const char* outfilename);
 static void readSave(const char* outfilename);
 static void writeSave(const char* infilename);
+static void debug();
 
 //string utils
 static void str_replace(char* str, char find, char to);
@@ -68,6 +69,8 @@ int main(int argc, char *argv[])
 		readSave(outfilename);
 	} else if(strcasecmp(func, "writeSave") == 0) {
 		writeSave(infilename);
+	} else if(strcasecmp(func, "debug") == 0) {
+		debug();
 	} else {
 		printf("Available commands:\n");
 		printf("   info\n");
@@ -253,6 +256,19 @@ static void writeSave(const char* infilename)
 	
 	//free data
 	free(data);
+}
+
+//print debug info
+static void debug() {
+	int i;
+	if(gbx_checkDetectorSwitch()) printf("Detector switch is triggered\n");
+	else printf("Detector switch is not triggered\n");
+	
+	char data[200];
+	gbx_dumpHeader(data);
+	printf("Header data:\n");
+	for(i=0; i<200; i++) printf("0x%02X,", data[i]);
+	printf("\n");
 }
 
 //string utils
