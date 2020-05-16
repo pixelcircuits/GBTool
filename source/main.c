@@ -264,10 +264,10 @@ static void debug() {
 	if(gbx_checkDetectorSwitch()) printf("Detector switch is triggered\n");
 	else printf("Detector switch is not triggered\n");
 	
-	char data[200];
+	char data[400];
 	gbx_dumpHeader(data);
 	printf("Header data:\n");
-	for(i=0; i<200; i++) printf("0x%02X,", data[i]);
+	for(i=0; i<400; i++) printf("0x%02X,", data[i]);
 	printf("\n");
 }
 
